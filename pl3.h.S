@@ -170,11 +170,13 @@ resident_area_start:					\
 resident_area_end:					\
 .org RESIDENT_AREA_OFFSET + RESIDENT_AREA_MAXSIZE
 
+#ifndef __PL3_INPLACE_LV2_PATCH__
 .org 0
 // Position 0x20 in the page
 payload_entry:
 	b	payload_main
 
 #include "pl3_memcpy.h.S"
+#endif
 
 #endif /* __PL3_H_S__ */

@@ -7,21 +7,12 @@ PPU_OBJCOPY = ppu-objcopy
 PPU_CFLAGS =
 
 # This isn't enough, you must also add rules for the filename_fw with the -D define
-SUPPORTED_FIRMWARES = 3.41 3.41_kiosk 3.40 3.30 3.21 3.15 3.10 3.01 2.85 2.76 2.70 2.60 2.53 2.43
-
-PAYLOADS = shellcode_egghunt.bin \
-	shellcode_panic.bin \
-	dump_lv2.bin
+SUPPORTED_FIRMWARES = 3.55 
+PAYLOADS = \
+dump_lv2.bin
 
 FW_PAYLOADS = \
-	default_payload.bin \
-	payload_dev.bin \
-	payload_no_unauth_syscall.bin \
-	payload_dump_elfs.bin \
-	payload_trace_syscalls.bin \
-	payload_trace_hypercalls.bin \
-	payload_trace_all_sc_calls.bin \
-	payload_trace_vuart.bin
+payload_inplace.bin
 
 FIRMWARES_2=$(SUPPORTED_FIRMWARES:2.%=2_%)
 FIRMWARES=$(FIRMWARES_2:3.%=3_%)
@@ -33,7 +24,7 @@ HEADERS = $(ALL_PAYLOADS:%.bin=%.h)
 
 MAX_PAYLOAD_SIZE=4064
 
-all: tools $(ALL_PAYLOADS) $(HEADERS) check_sizes
+all: tools $(ALL_PAYLOADS) $(HEADERS) 
 
 tools:
 	$(MAKE) -C tools
@@ -102,6 +93,9 @@ $(ALL_PAYLOADS): *.h.S config.h
 
 %_3_41_kiosk.o : %.S
 	$(PPU_CC) $(PPU_CFLAGS) -DFIRMWARE_3_41 -DKIOSK -c $< -o $@
+
+%_3_55.o : %.S
+	$(PPU_CC) $(PPU_CFLAGS) -DFIRMWARE_3_55 -c $< -o $@
 
 %.o : %.S
 	$(PPU_CC) $(PPU_CFLAGS) -c $< -o $@

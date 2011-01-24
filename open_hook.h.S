@@ -23,6 +23,7 @@
  * }
  */
 	.set	MAX_TABLE_ENTRIES, 16
+#ifndef __PL3_INPLACE_LV2_PATCH__
 open_mapping_table:
 	.quad	0
 
@@ -31,6 +32,10 @@ syscall_map_open_desc:
 
 DEFINE_FUNC_PTR(map_open_path)
 DEFINE_FUNC_PTR(syscall_map_open)
+#else
+syscall_map_open_desc:
+	QUAD_MEM2 (syscall_map_open_start)
+#endif
 
 /**
  * hook_open:
@@ -57,7 +62,11 @@ hook_open:
 
 	// load the mapping_table in %r26
 	MEM_BASE (%r26)
+#ifdef __PL3_INPLACE_LV2_PATCH__
+	LOAD_ABS (%r26, %r26, open_mapping_table_ext)
+#else
 	LOAD_LABEL2 (%r26, %r26, open_mapping_table)
+#endif
 	ld	%r26, 0(%r26)
 	cmpldi	%r26, 0
 	beq	l_hook_open_proceed
@@ -93,6 +102,10 @@ l_hook_open_next_table_entry:
 	addi	%r29, %r3, 4			// reload the new_path into %r29
 l_hook_open_proceed:
 	mr	%r3, %r29
+#ifdef __PL3_INPLACE_LV2_PATCH__
+	b       (patch_func3 + patch_func3_offset + 4)
+#else
 	b       ABSOLUTE_MEM2(patch_func3 + patch_func3_offset + 4)
+#endif
 
 #endif /* __OPEN_HOOK_H_S__ */

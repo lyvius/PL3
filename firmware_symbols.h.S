@@ -16,7 +16,19 @@
 #ifndef __FIRMWARE_SYMBOLS_H_S__
 #define __FIRMWARE_SYMBOLS_H_S__
 
-#ifdef FIRMWARE_3_41
+#ifdef FIRMWARE_3_55
+#define MEM_BASE2		0xef48
+#define patch_func3 		0x2a3f24
+#define patch_func3_offset	0
+#define strncmp			0x4e6d8
+#define strcpy			0x4e684
+#define pathdup_from_user	0x18dc68
+#define open_mapping_table_ext	0x7fff00
+#define strlen			0x4e6ac
+#define alloc			0x60b78
+#define free			0x60fb4
+
+#elif defined(FIRMWARE_3_41)
 
 /* Common Symbols */
 #define memcpy 			0x7c01c

@@ -115,7 +115,11 @@ l_map_open_unset:
 
 	// check the map table
 	MEM_BASE (%r31)
-	LOAD_LABEL2 (%r26, %r31, open_mapping_table)
+#ifdef __PL3_INPLACE_LV2_PATCH__
+	LOAD_ABS (%r26, %r31, open_mapping_table_ext)
+#else
+	LOAD_LABEL2 (%r26, %r26, open_mapping_table)
+#endif
 	ld	%r3, 0(%r26)
 	cmpldi	%r3, 0
 	bne	l_map_open_no_alloc
@@ -269,11 +273,12 @@ l_syscall_map_open_call:
 	ld	%r3, 0xa0(%r1)			// old path
 	ld	%r4, 0xb0(%r1)			// new path
 	// Call map_open_path
-	MEM_BASE (%r6)
-	LOAD_LABEL2 (%r6, %r6, map_open_path_ptr)
-	ld	%r6, 0(%r6)
-	mtctr	%r6
-	bctrl
+//	MEM_BASE (%r6)
+//	LOAD_LABEL2 (%r6, %r6, map_open_path_ptr)
+	//ld	%r6, 0(%r6)
+	//mtctr	%r6
+	//bctrl
+	bl map_open_path_start
 	mr	%r26, %r3
 	ld	%r3, 0xa0(%r1)
 	li	%r4, 0x27
