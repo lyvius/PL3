@@ -27,6 +27,7 @@
 #define strlen			0x4e6ac
 #define alloc			0x60b78
 #define free			0x60fb4
+#define syscall_table		0x346570
 
 #define rtoc_entry_1		0x1030
 
