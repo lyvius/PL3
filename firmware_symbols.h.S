@@ -28,6 +28,8 @@
 #define alloc			0x60b78
 #define free			0x60fb4
 
+#define rtoc_entry_1		0x1030
+
 #elif defined(FIRMWARE_3_41)
 
 /* Common Symbols */
