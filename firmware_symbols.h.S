@@ -33,7 +33,7 @@
 #define patch_func1_offset	0x34
 #define patch_func2		0x07a7c4
 #define patch_func2_offset	0x2C
-#define patch_func3 		0x2b3274 
+#define patch_func3 		0x2a3f24
 #define patch_func3_offset	0
 #define patch_func4		0x079d80
 #define patch_func4_offset	0x0
