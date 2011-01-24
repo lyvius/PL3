@@ -17,7 +17,7 @@
 #define __FIRMWARE_SYMBOLS_H_S__
 
 #ifdef FIRMWARE_3_55
-#define memcpy 			0x7c01c
+//#define memcpy 			0x7c01c
 #define memset 			0x4e5b4
 #define MEM_BASE2		0xef48
 #define strncmp			0x4e6d8
