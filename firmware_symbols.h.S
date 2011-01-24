@@ -17,9 +17,9 @@
 #define __FIRMWARE_SYMBOLS_H_S__
 
 #ifdef FIRMWARE_3_55
+#define memcpy 			0x7c01c
+#define memset 			0x4e5b4
 #define MEM_BASE2		0xef48
-#define patch_func3 		0x2a3f24
-#define patch_func3_offset	0
 #define strncmp			0x4e6d8
 #define strcpy			0x4e684
 #define pathdup_from_user	0x18dc68
@@ -28,8 +28,20 @@
 #define alloc			0x60b78
 #define free			0x60fb4
 #define syscall_table		0x346570
+#define memory_patch_func	0x1c34c
+#define patch_func1		0x0323c
+#define patch_func1_offset	0x34
+#define patch_func2		0x07a7c4
+#define patch_func2_offset	0x2C
+#define patch_func3 		0x2b3274 
+#define patch_func3_offset	0
+#define patch_func4		0x079d80
+#define patch_func4_offset	0x0
+#define patch_func5		0x0e7f0
+#define patch_func5_offset	0x0
 
 #define rtoc_entry_1		0x1030
+#define rtoc_entry_2		-0x5b28
 
 #elif defined(FIRMWARE_3_41)
 
