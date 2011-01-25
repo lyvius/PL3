@@ -17,31 +17,56 @@
 #define __FIRMWARE_SYMBOLS_H_S__
 
 #ifdef FIRMWARE_3_55
-//#define memcpy 			0x7c01c
-#define memset 			0x4e5b4
-#define MEM_BASE2		0xef48
-#define strncmp			0x4e6d8
-#define strcpy			0x4e684
-#define pathdup_from_user	0x18dc68
-#define open_mapping_table_ext	0x7fff00
+#define TOC 0x330540
+#define memcpy 			0x7c3a4
+#define memset 			0x4e4d8
+#define strcpy 			0x4e684
+#define strncmp	 		0x4e6d8
 #define strlen			0x4e6ac
-#define alloc			0x60b78
-#define free			0x60fb4
+#define pathdup_from_user	0x18dc68
+#define copy_from_user		0xf8c0
+#define copy_to_user		0xf6a4
+#define alloc_and_copy_from_user 0x18de28
+#define strdup_from_user	0x192b8c
+#define alloc 			0x60b78
+#define free 			0x60fb4
 #define syscall_table		0x346570
 #define memory_patch_func	0x1c34c
-#define patch_func1		0x0323c
+#define patch_func1		0x323c
 #define patch_func1_offset	0x34
-#define patch_func2		0x07a7c4
+#define patch_func2		0x7a7c4
 #define patch_func2_offset	0x2C
-#define patch_func3 		0x2a3f24
-#define patch_func3_offset	0
+#define patch_func3		0x2b3274 //  vsh_open_hook_desc
+#define patch_func3_offset	0x24
 #define patch_func4		0x079d80
 #define patch_func4_offset	0x0
 #define patch_func5		0x0e7f0
 #define patch_func5_offset	0x0
-
+#define patch_func6		0x24e44
+#define patch_func6_offset	0x0
+#define patch_func7		0xc1dd0
+#define patch_func7_offset	0x0
+#define patch_func8		0x55d20
+#define patch_func8_offset1	0xA4
+#define patch_func8_offset2	0x208
+#define patch_func9		0x7ab90 // must upgrade error
+#define patch_func9_offset	0x3EC
+#define patch_syscall_func	0x297db0
+#define patch_data1		0x3c2f00
 #define rtoc_entry_1		0x1030
-#define rtoc_entry_2		-0x5b28
+#define rtoc_entry_2		-0x5b80
+
+#define lv2_printf		0x29285c
+#define lv2_printf_null		0x2972cc
+#define hvsc107_1		0xfc3c
+#define hvsc107_2		0xfcd0
+#define hvsc107_3		0xfb0c
+
+// Payload bases
+#define MEM_BASE2 		(0xef48)
+	
+#define RESIDENT_AREA_MAXSIZE (1452)
+
 
 #elif defined(FIRMWARE_3_41)
 
