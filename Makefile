@@ -8,9 +8,7 @@ PPU_CFLAGS =
 
 # This isn't enough, you must also add rules for the filename_fw with the -D define
 SUPPORTED_FIRMWARES = 3.55 
-PAYLOADS = \
-dump_lv2.bin
-
+PAYLOADS = 
 FW_PAYLOADS = \
 payload_inplace.bin
 

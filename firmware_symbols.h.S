@@ -62,6 +62,22 @@
 #define hvsc107_2		0xfcd0
 #define hvsc107_3		0xfb0c
 
+//#define HASH_TABLE_1            0xA0577BB4002C8B20
+//#define HASH_TABLE_2            0x6B7028FE00020041
+//#define HASH_TABLE_3            0x8c0a948c000d93D3
+//#define HASH_TABLE_4            0xA2BC0C1E0004C6E2
+
+#define elf1_func1              0x5FFEE8
+#define elf1_func1_offset       0x00
+#define elf1_func2              0x30A7C0
+#define elf1_func2_offset       0x14
+//#define elf2_func1              0x2EB44
+//#define elf2_func1_offset       0x374
+
+//#define elf3_data               0x0022A758
+//#define elf4_data               0x000c86c8
+
+
 // Payload bases
 #define MEM_BASE2 		(0xef48)
 	

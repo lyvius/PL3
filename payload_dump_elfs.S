@@ -247,7 +247,7 @@ memory_patch_table_4:
 
 RESIDENT_AREA_END()
 
-// HACK: the patch_table won't include the bl memory_patching without this
+// HACK: the patch_table wont include the bl memory_patching without this
 #define __MEMORY_PATCHING_H_S__
 #include "patch_table.h.S"
 
